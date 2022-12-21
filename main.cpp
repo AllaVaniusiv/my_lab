@@ -8,10 +8,10 @@ int main()
 {
     Bank n(2);
     n.print();
-    n.addAcc();
-    n.sortList();
+    n.add_acc();
+    n.descending_sort();
     n.print();
-    n.delAcc(0);
+    n.del_acc(0);
     n.print();
     return 0;
 }

@@ -8,39 +8,38 @@ using namespace std;
 class Bank
 {
 private:
-	vector<BankAccount> l;
+	vector<BankAccount> accounts;
 public:
 	Bank(int n){
 		for (int i = 0; i < n; i++) {
 			BankAccount *tmp = new BankAccount();
-			l.push_back(*tmp);
+			accounts.push_back(*tmp);
 		}
 	}
-	void addAcc() {
+	void add_acc() {
 		BankAccount* tmp = new BankAccount();
-		l.push_back(*tmp);
+		accounts.push_back(*tmp);
 	}
-	void delAcc(int id) {
-		for (int i = 0; i < l.size(); i++) {
-			if (l[i].getId() == id) {
-				l.erase(l.begin() + i);
+	void del_acc(int id) {
+		for (int i = 0; i < accounts.size(); i++) {
+			if (accounts[i].get_id() == id) {
+				accounts.erase(accounts.begin() + i);
 			}
 		}
 	}
-	void sortList() {
-		for (int i = 0; i < l.size(); i++) {
-			for (int j = i; j < l.size(); j++) {
-				if (l[i].getBalance() < l[j].getBalance()) {
-					BankAccount tmp = l[i];
-					l[i] = l[j];
-					l[j] = tmp;
+	void descending_sort () {
+		for (int i = 0; i < accounts.size(); i++) {
+			for (int j = i; j < accounts.size(); j++) {
+				if (accounts[i].get_balance() < accounts[j].get_balance()) {
+					BankAccount tmp = accounts[i];
+					swap(accounts[i], accounts[j]);
 				}
 			}
 		}
 	}
 	void print() {
-		for (int i = 0; i < l.size(); i++) {
-			l[i].showAccount();
+		for (int i = 0; i < accounts.size(); i++) {
+			accounts[i].show_account();
 		}
 	}
 };
